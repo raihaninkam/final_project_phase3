@@ -119,3 +119,39 @@ func (ph *PostHandler) GetFeed(ctx *gin.Context) {
 		"data":    posts,
 	})
 }
+
+// GetPopularPosts godoc
+// @Summary     Get Popular Posts
+// @Description Mendapatkan postingan populer berdasarkan jumlah likes, comments, dan followers (7 hari terakhir)
+// @Tags        Posts
+// @Accept      json
+// @Produce     json
+// @Param       page query int false "Page number" default(1)
+// @Param       limit query int false "Items per page" default(10)
+// @Success     200 {object} map[string]interface{}
+// @Failure     500 {object} map[string]interface{}
+// @Router      /posts/popular [get]
+func (ph *PostHandler) GetPopularPosts(ctx *gin.Context) {
+	// Pagination
+	page, _ := strconv.Atoi(ctx.DefaultQuery("page", "1"))
+	limit, _ := strconv.Atoi(ctx.DefaultQuery("limit", "10"))
+	offset := (page - 1) * limit
+
+	posts, err := ph.pr.GetPopularPosts(ctx.Request.Context(), limit, offset)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"success": false,
+			"error":   "Internal Server Error",
+		})
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"data":    posts,
+		"pagination": gin.H{
+			"page":  page,
+			"limit": limit,
+		},
+	})
+}
