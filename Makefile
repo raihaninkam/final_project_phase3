@@ -1,6 +1,7 @@
 include ./.env
 DBURL=postgres://$(DBUSER):$(DBPASS)@$(DBHOST):$(DBPORT)/$(DBNAME)?sslmode=disable
 MIGRATIONPATH=db/migrations
+SEEDPATH=db/seeds
 
 migrate-create:
 	migrate create -ext sql -dir $(MIGRATIONPATH) -seq create_$(NAME)_table
@@ -16,3 +17,7 @@ migrate-status:
 
 migrate-force:
 	migrate -database $(DBURL) -path $(MIGRATIONPATH) force $(v)
+
+seed:
+psql $(DBURL) -f $(SEEDPATH)/seed.sql
+
