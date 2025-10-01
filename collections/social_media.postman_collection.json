@@ -1,0 +1,442 @@
+{
+  "info": {
+    "_postman_id": "4b7827b4-2a06-4864-9526-d699181f533a",
+    "name": "social_media",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "45519529"
+  },
+  "item": [
+    {
+      "name": "REGISTER",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"raihaninsan@gmail.com\",\r\n    \"password\": \"@Testing123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3009/auth/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["auth", "register"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LOGIN",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"raihankamil37@gmail.com\",\r\n    \"password\": \"@Testing123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3009/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POSTING",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZmY3NzlkNjMtNWEyNC00ZjMzLTk1NmMtN2I5OGY0MDdhZjU1Iiwicm9sZSI6InVzZXIiLCJpc3MiOiJpbmthbSIsImV4cCI6MTc1OTI3ODE2N30.sVYLGTblC-IWxGMupJITJcL-onkwKExOXiaVk-VwT2w",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "content_text",
+              "value": "Ini postingan ketiga saya sebagai percobaan bahwa postingan berhasil dibuat",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": "/C:/Users/User/Downloads/inkam_profile_linkedin.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3009/post",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["post"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET FOLLOWING LIST",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZmY3NzlkNjMtNWEyNC00ZjMzLTk1NmMtN2I5OGY0MDdhZjU1Iiwicm9sZSI6InVzZXIiLCJpc3MiOiJpbmthbSIsImV4cCI6MTc1OTI4NjUyNH0.qRJwe18zINyIDR4EHz-cZef7MykAuSUSRJssWBq4NK8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "content_text",
+              "value": "Ini postingan ketiga saya sebagai percobaan bahwa postingan berhasil dibuat",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": "/C:/Users/User/Downloads/inkam_profile_linkedin.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3009/following",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["following"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FOLLOW",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZmY3NzlkNjMtNWEyNC00ZjMzLTk1NmMtN2I5OGY0MDdhZjU1Iiwicm9sZSI6InVzZXIiLCJpc3MiOiJpbmthbSIsImV4cCI6MTc1OTI4MTQ3OH0.OfNHx1AQzYg5MMDc7uzc6Fikr3_sw6n7ro-tmanuurA",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "content_text",
+              "value": "Ini postingan ketiga saya sebagai percobaan bahwa postingan berhasil dibuat",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": "/C:/Users/User/Downloads/inkam_profile_linkedin.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3009/follow/5fc0053a-533c-4beb-9934-ccf36a1e0c2a",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["follow", "5fc0053a-533c-4beb-9934-ccf36a1e0c2a"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET FOLLOWING POST",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWZjMDA1M2EtNTMzYy00YmViLTk5MzQtY2NmMzZhMWUwYzJhIiwicm9sZSI6InVzZXIiLCJpc3MiOiJpbmthbSIsImV4cCI6MTc1OTI4MjY2NX0.KvAenAhZSj7hR3fGQ8vwYHZIkFgbisOF4EYolUIoP64",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "content_text",
+              "value": "Ini postingan ketiga saya sebagai percobaan bahwa postingan berhasil dibuat",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": "/C:/Users/User/Downloads/inkam_profile_linkedin.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3009/post",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["post"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LIKE POST",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZmY3NzlkNjMtNWEyNC00ZjMzLTk1NmMtN2I5OGY0MDdhZjU1Iiwicm9sZSI6InVzZXIiLCJpc3MiOiJpbmthbSIsImV4cCI6MTc1OTI4NjY4N30.u_XZcATgKbPv05nFgNdFcMEChST0s5S34AqWrJIVWeU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "content_text",
+              "value": "Ini postingan ketiga saya sebagai percobaan bahwa postingan berhasil dibuat",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": "/C:/Users/User/Downloads/inkam_profile_linkedin.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3009/post/847aa587-845d-4bab-98e5-421692d6856e/like",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["post", "847aa587-845d-4bab-98e5-421692d6856e", "like"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "COMMENT",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZmY3NzlkNjMtNWEyNC00ZjMzLTk1NmMtN2I5OGY0MDdhZjU1Iiwicm9sZSI6InVzZXIiLCJpc3MiOiJpbmthbSIsImV4cCI6MTc1OTI4NjY4N30.u_XZcATgKbPv05nFgNdFcMEChST0s5S34AqWrJIVWeU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"content\": \"kece banget pak\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3009/post/847aa587-845d-4bab-98e5-421692d6856e/comment",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["post", "847aa587-845d-4bab-98e5-421692d6856e", "comment"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET POST COMMENT",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWZjMDA1M2EtNTMzYy00YmViLTk5MzQtY2NmMzZhMWUwYzJhIiwicm9sZSI6InVzZXIiLCJpc3MiOiJpbmthbSIsImV4cCI6MTc1OTI4NzM1M30.szNQTsVwMvRgaCcFK_SMAf-fTOhsUOjvKWotduElpPg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3009/post/847aa587-845d-4bab-98e5-421692d6856e/comment",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["post", "847aa587-845d-4bab-98e5-421692d6856e", "comment"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UPDATE PROFILE",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWZjMDA1M2EtNTMzYy00YmViLTk5MzQtY2NmMzZhMWUwYzJhIiwicm9sZSI6InVzZXIiLCJpc3MiOiJpbmthbSIsImV4cCI6MTc1OTI5MTQ5Nn0.CPNB-pW398d1dXjQnEkceSAVeM-f0MSCntcXBOICkts",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "Inkam",
+              "type": "text"
+            },
+            {
+              "key": "bio",
+              "value": "Just Dreaming",
+              "type": "text"
+            },
+            {
+              "key": "avatar",
+              "type": "file",
+              "src": "/C:/Users/User/Downloads/inkam_profile_linkedin.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3009/auth/profile",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["auth", "profile"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POPULAR POST",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWZjMDA1M2EtNTMzYy00YmViLTk5MzQtY2NmMzZhMWUwYzJhIiwicm9sZSI6InVzZXIiLCJpc3MiOiJpbmthbSIsImV4cCI6MTc1OTMwNjM4NX0.-1iXnLO74aUDI_JP3yWP2TxTeSq25rAVz23uGThk1DA",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "content_text",
+              "value": "Ini postingan ketiga saya sebagai percobaan bahwa postingan berhasil dibuat",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": "/C:/Users/User/Downloads/inkam_profile_linkedin.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3009/post/popular",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["post", "popular"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UNLIKE POST",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWZjMDA1M2EtNTMzYy00YmViLTk5MzQtY2NmMzZhMWUwYzJhIiwicm9sZSI6InVzZXIiLCJpc3MiOiJpbmthbSIsImV4cCI6MTc1OTMwNTIwOH0.7iVXU_ALI3QG8LwgIeZ89j27Zy5YhoFs_2vylw3IPdI",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3009/post/847aa587-845d-4bab-98e5-421692d6856e/like",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3009",
+          "path": ["post", "847aa587-845d-4bab-98e5-421692d6856e", "like"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
