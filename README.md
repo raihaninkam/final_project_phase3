@@ -133,4 +133,6 @@ Copyright (c) 2025 raihaninkam
 
 ## 📧 Contact Info & Contributor
 
-[https://github.com/raihaninkam](https://github.com/raihaninkam)
+raihankamil37@gmail.com
+
+[https://www.linkedin.com/in/raihan-insan-kamil/](https://github.com/raihaninkam)
