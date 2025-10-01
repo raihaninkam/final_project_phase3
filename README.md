@@ -11,15 +11,15 @@ A social media platform built to make it easy for you to share moments, connect 
 
 Ekspektasi awal yakni aplikasi kecil. Start with Monolith. langsung menerapkan microservice pada semua aplikasi (overkill) terurama pada aplikasi baru yang trafficnya masih kecil. terlalu mengeluarkan resource tanpa memperhatikan kebutuhan.
 
-![alt text](image.png)
+![alt text](/image.png)
 
 Ketika Kebutuhan aplikasi semakin kompleks. Lakukan Scalling Up salah satunya dengan menerapkan MicroService, yakni kita pecah aplikasi kita menjadi ke beberapa server dalam servicenya. menggunakan CDN untuk konten yang sifatnya statis dan jika user kita sudah ada di beberapa region
 
-![alt text](image-1.png)
+![alt text](/image-1.png)
 
 ## ERD
 
-![alt text](social_media.png)
+![alt text](/social_media.png)
 
 ### Relationship Type Cardinality
 
