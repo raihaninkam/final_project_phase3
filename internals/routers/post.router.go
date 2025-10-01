@@ -31,4 +31,8 @@ func InitPostRouter(router *gin.Engine, db *pgxpool.Pool, rdb *redis.Client) {
 	postRouter.POST("/post/:id/comment", middleware.VerifyToken(rdb), commentHandler.CreateComment)
 	postRouter.DELETE("/comment/:id", middleware.VerifyToken(rdb), commentHandler.DeleteComment)
 
+	// popular
+	popularHandler := handlers.NewPostHandler(postRepository)
+	postRouter.GET("/post/popular", middleware.VerifyToken(rdb), popularHandler.GetPopularPosts)
+
 }
