@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -203,6 +204,64 @@ func (pr *PostRepository) GetFollowingPosts(ctx context.Context, userID string, 
 	if len(posts) > 0 {
 		postsJSON, _ := json.Marshal(posts)
 		pr.rdb.Set(ctx, cacheKey, postsJSON, 2*time.Minute)
+	}
+
+	return posts, nil
+}
+
+// GetPopularPosts mendapatkan postingan dengan interaksi tinggi
+func (pr *PostRepository) GetPopularPosts(ctx context.Context, limit, offset int) ([]*models.Posting, error) {
+	query := `
+		SELECT 
+			p.id, p.user_id, p.content_text, p.image_url, p.created_at, p.updated_at,
+			u.name as user_name, u.avatar_url as user_avatar_url,
+			COUNT(DISTINCT l.id) as like_count,
+			COUNT(DISTINCT c.id) as comment_count,
+			COUNT(DISTINCT f.follower_id) as follower_count,
+			(COUNT(DISTINCT l.id) * 1.0 + COUNT(DISTINCT c.id) * 2.0 + COUNT(DISTINCT f.follower_id) * 0.5) as popularity_score
+		FROM posts p
+		INNER JOIN users u ON p.user_id = u.id
+		LEFT JOIN likes l ON p.id = l.post_id
+		LEFT JOIN comments c ON p.id = c.post_id
+		LEFT JOIN follows f ON p.user_id = f.following_id
+		WHERE p.created_at >= NOW() - INTERVAL '7 days'
+		GROUP BY p.id, u.id
+		HAVING COUNT(DISTINCT l.id) + COUNT(DISTINCT c.id) > 0
+		ORDER BY popularity_score DESC, p.created_at DESC
+		LIMIT $1 OFFSET $2
+	`
+
+	rows, err := pr.db.Query(ctx, query, limit, offset)
+	if err != nil {
+		log.Println("Failed to get popular posts:", err.Error())
+		return nil, err
+	}
+	defer rows.Close()
+
+	var posts []*models.Posting
+	for rows.Next() {
+		var post models.Posting
+		var popularityScore float64
+
+		err := rows.Scan(
+			&post.ID,
+			&post.UserID,
+			&post.Content,
+			&post.ImageUrl,
+			&post.CreatedAt,
+			&post.UpdatedAt,
+			&post.UserName,
+			&post.UserAvatarUrl,
+			&post.LikeCount,
+			&post.CommentCount,
+			&post.FollowerCount,
+			&popularityScore,
+		)
+		if err != nil {
+			log.Println("Failed to scan post:", err.Error())
+			continue
+		}
+		posts = append(posts, &post)
 	}
 
 	return posts, nil
