@@ -1,0 +1,14 @@
+basePath: /
+host: localhost:9001
+info:
+  contact: {}
+  title: Backend Golang Tickitz App
+  version: "1.0"
+paths: {}
+securityDefinitions:
+  BearerAuth:
+    description: 'Masukkan format: Bearer <token>'
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
